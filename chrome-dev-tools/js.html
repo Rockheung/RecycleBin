@@ -1,0 +1,44 @@
+<!-- text debugger -->
+<script>
+  var getCenterIdx = function (start, end) {
+    var l = end - start + 1;
+    return start + (l % 2 ? (l - 1) / 2 : (l / 2 - 1));
+  }
+
+  var search = function (nums, target) {
+    if (nums.length === 1) {
+      return nums[0] === target ? 0 : -1;
+    }
+
+    let _startIdx = 0;
+    let _endIdx = nums.length - 1;
+    let _numIdx = getCenterIdx(_startIdx, _endIdx);
+    console.log('_numIdx', _numIdx)
+    let _num = nums[_numIdx];
+
+    while (target !== _num) {
+      debugger
+      console.log('_num', _num)
+      if (target < _num) {
+        _endIdx = _numIdx - 1;
+        if (_endIdx < 0) return -1;
+        _numIdx = getCenterIdx(_startIdx, _endIdx);
+        if (_numIdx === _endIdx) return - 1;
+        _num = nums[_numIdx];
+        if ((_endIdx - _startIdx) === 1 && target !== _num) return -1;
+
+      } else {
+        _startIdx = _numIdx + 1;
+        if (_startIdx > nums.length - 1) return -1;
+        _numIdx = getCenterIdx(_startIdx, _endIdx);
+        if (_numIdx === _endIdx) return - 1;
+        _num = nums[_numIdx];
+        if ((_endIdx - _startIdx) === 1 && target !== _num) return -1;
+
+      }
+    }
+    return _numIdx;
+  };
+
+  search([-1, 2, 5], 0)
+</script>
