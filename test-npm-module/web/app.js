@@ -1,3 +1,3 @@
-require(['node_modules/lib'], function(lib) {
+require(['node_modules/lib/index.js'], function(lib) {
   lib.helloUMD();
 })

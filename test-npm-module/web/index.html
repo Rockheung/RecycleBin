@@ -6,11 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test UMD</title>
 
-  <script src="./require.js"></script>
+  <script data-main="./app.js" src="./require.js"></script>
   <script>
-    require(['node_modules/lib/index.js'], function(lib) {
-      lib.helloUMD();
-    })
+    
   </script>
 </head>
 <body>
